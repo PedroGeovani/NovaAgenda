@@ -1,25 +1,20 @@
 <template>
-    <p v-for="use in nameUser" : Key="use"> {{ use }}</p>
+<div v-for="(user,i) in users" :key="i"> Nome: {{ user }}</div>
 </template>
 
 <script lang="ts">
-import { UserTypes } from '@/api/typesUser';
-import list from '@/api/rxjs'
-
-
+import { InstanceApi } from '@/api/intance';
+import { url } from '@/api/address'
+import { UserTypes } from '@/api/typesUser'
 export default {
-    name: "App",
-    data() {
-        return {
-            nameUser: new Array<UserTypes>,
+    data(){
+        return{
+            users: new Array<UserTypes>()
         }
     },
-    mounted() {
-        const teste = list.get<UserTypes>("/users", undefined, "/api", "json", "6679b7a718a459f639512c41")
-            .pipe().subscribe({ next: (response) => response });
-        this.nameUser = teste
-
+    setup(){ 
+        this.users = new InstanceApi(url,"/users").getUsers<UserTypes>();                     
     }
-
 }
+
 </script>

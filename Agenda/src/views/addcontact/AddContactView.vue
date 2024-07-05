@@ -1,8 +1,9 @@
 <script lang="ts">
+
 </script>
 
 <template>
   <div>
-    Detalhes
+    Adicionar
   </div>
 </template>

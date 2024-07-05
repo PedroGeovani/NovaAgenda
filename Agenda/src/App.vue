@@ -1,13 +1,14 @@
-<script setup lang="ts">
+<script lang="ts">
+  import HomeView from './views/HomeView.vue';
+export default {
+  components:{
+    HomeView
+  }
+}
+
 </script>
 
 <template>
-  <nav>
-    <RouterLink to="/">Agenda</RouterLink> |
-    <RouterLink to="/about">Adicionar</RouterLink>
-  </nav>
-  <RouterView />
+  <HomeView/>   
+  <router-view> </router-view>
 </template>
-
-
-<style scoped></style>

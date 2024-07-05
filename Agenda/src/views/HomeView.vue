@@ -1,21 +1,14 @@
 <script lang="ts">
-import contactview from './contact/ContactView.vue'
-
+import Navigation from '@/componets/Navigation.vue';
 export default {
-  data() {
-    return {
-      nameUser: "tudo",
-    }
-  },
   components: {
-    contactview
+   Navigation
   }
 }
 </script>
 
 <template>
   <div>
-    <contactview />
+    <Navigation/> 
   </div>
-
 </template>
