@@ -1,5 +1,5 @@
 <script lang="ts">
-  import HomeView from './views/HomeView.vue';
+  import HomeView from '@/views/HomeView.vue';
 export default {
   components:{
     HomeView
@@ -9,6 +9,8 @@ export default {
 </script>
 
 <template>
-  <HomeView/>   
-  <router-view> </router-view>
+  <div> 
+    <HomeView/>   
+    <router-view> </router-view>
+  </div>  
 </template>

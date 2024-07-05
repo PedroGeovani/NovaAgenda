@@ -1,15 +1,9 @@
 <template>
     <header> Agenda </header>
-    <router-link to="/Contacts"> Contatos </router-link> | 
-    <router-link to="/AddContact"> Novo Contato </router-link>
+    <div> 
+        <router-link to='/Contacts'    > Contatos </router-link> | 
+        <router-link to='/AddContact'  > Novo Contato </router-link> | 
+        <router-link to='/Contacts2'   > Contatos2 </router-link> | 
+        <router-link to='/AddContact2' > Novo Contato2 </router-link>
+    </div>
 </template>
-
-<script lang="ts">
-export default {
-    data(){
-       return{
-
-       }
-    }
-}    
-</script>
