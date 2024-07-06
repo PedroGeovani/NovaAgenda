@@ -15,7 +15,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://6679b7a718a459f639512c41.mockapi.io/agenda/v1',
+        target: 'https://66895db60ea28ca88b87c325.mockapi.io/api/users',
         ws: true,
         changeOrigin: true
       }
