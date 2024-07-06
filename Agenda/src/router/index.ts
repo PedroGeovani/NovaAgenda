@@ -22,7 +22,7 @@ const router = createRouter({
     {path: '/ContactsA', name: 'ContactsA', component: ContactsViewA},
     {path: '/AddContactA', name: 'AddContactA', component: AddContactViewA},
     {path: '/EditContactViewA/:id', name: 'EditContactViewA', component: EditContactViewA},
-    {path: '/DetailsContactA/:id', name: 'DetailsContactA', component: DetailsContactViewA},
+    {path: '/DetailsContactA/:id/:name/:address/:city/:phone/:email', name: 'DetailsContactA', component: DetailsContactViewA},
   ]
 })
 
