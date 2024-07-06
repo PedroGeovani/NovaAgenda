@@ -1,7 +1,7 @@
 import axios from "axios";
 import { URL } from "./address";
 
-const instance = axios.create({
+export const api = axios.create({
     baseURL: URL
   })
 
