@@ -15,7 +15,7 @@ h1{
     color: white;
 }
 header{
-    background:rgb(90,90,255);
+    background:rgb(30,30,255);
     padding: 10px 30px;
     border-bottom-left-radius: 30px;
 }
@@ -24,13 +24,19 @@ header{
 }
 .routerlink{
     font-size: 16px;
-    font-weight: 600;
     text-decoration: none;
-    background: rgb(90,90,255);
-    color: white;
+    color: rgb(30,30,255);
+    background: rgb(255,255,255);
     padding: 3px 10px;
     border-radius: 10px;
-    margin-left: 10px;    
+    margin-left: 10px;
+    border-style: solid;
+    border-color: rgb(30, 30, 255);   
+}
+.router-link-exact-active{
+    background: rgb(30, 30, 255);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 </style>

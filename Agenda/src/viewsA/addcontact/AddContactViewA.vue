@@ -5,32 +5,32 @@
       
         <form id='name'> 
           <label for="nome"> Nome: </label>
-          <input class="enter" type="text" id="name" v-model="name" placeholder="Digite seu nome">
+          <input class="enter" type="text" id="name" v-model="addUser.name" placeholder="Digite seu nome">
         </form> 
 
         <form id='address'> 
           <label for="address"> Endereço:  </label>
-          <input class="enter"  type="text" id="address" v-model="address" placeholder="Digite seu endereço">
+          <input class="enter"  type="text" id="address" v-model="addUser.address" placeholder="Digite seu endereço">
         </form>
 
         <form id='city'> 
           <label for="city"> Cidade:  </label>
-          <input class="enter" type="text" id="city" v-model="city" placeholder="Digite sua cidade">
+          <input class="enter" type="text" id="city" v-model="addUser.city" placeholder="Digite sua cidade">
         </form>
 
         <form id='phone'> 
           <label for="phone"> Telefone:  </label>
-          <input class="enter"  type="text" id="phone" v-model="phone" placeholder="Digite seu telefone">
+          <input class="enter"  type="text" id="phone" v-model="addUser.phone" placeholder="Digite seu telefone">
         </form>
         
         <form id='email'> 
           <label for="email"> Email:  </label>
-          <input class="enter" type="text" id="email" v-model="email" placeholder="Digite seu email">
+          <input class="enter" type="text" id="email" v-model="addUser.email" placeholder="Digite seu email">
         </form>
             
       <div class="position"> 
-        <input class="button" type="submit" value="Descartar" @click="clear"/>  
-        <input class="button" type="submit" value="Salvar"/>
+        <input class="button" type="submit" value="Descartar" @click="addUser=clear(addUser)"/>  
+        <input class="button" type="submit" value="Salvar" @click="newContact(addUser)"/>
       </div>
         
     </div>
@@ -38,33 +38,40 @@
 </template>
 
 <script lang="ts">
-import { emit } from 'process';
+import { api } from '@/api/api'; 
+import { UserTypes } from '@/api/typesUser';
+
 
 export default {
   data(){
     return{
-      name: '',
-      address: '',
-      city: '',
-      phone:'',
-      email:'',
+      addUser : new UserTypes,      
     }
   },
   methods:{
-    clear: function(){
-      this.name = ''
-      this.address = ''
-      this.city = ''
-      this.phone =''
-      this.email ='' 
-    },
-  },
-  emits:{
-    
-  } 
+    clear: function(addUser: UserTypes):UserTypes{
+        addUser.name = ''
+        addUser.address =''
+        addUser.city =''
+        addUser.phone =''
+        addUser.email =''
+        return addUser
+      },
 
+  newContact : function(addUser: UserTypes){
+    api
+    .post("/users/",{
+        name : addUser.name,
+        address : addUser.address,
+        city : addUser.city,
+        phone : addUser.phone,
+        email : addUser.email,
+    }).then(() => {this.addUser = this.clear(addUser)})
+    }
+  }
 }
 </script>
+
 <style scoped>
 form{
   margin: 8px 30px;
@@ -75,12 +82,12 @@ label{
   width: 100px;
   font-size: 18px;
   font-weight: bold;
-  color: rgb(45, 45, 248);
+  color: rgb(30, 30, 248);
 }
 
 .title{
   display: inline-block;
-  color: rgb(45, 45, 248);
+  color: rgb(30, 30, 248);
   font-size: 20px;
   font-weight: 600;  
   padding: 3px 30px;
@@ -97,9 +104,9 @@ label{
 
 .button{
   display: inline-block;
-  background: rgb(90, 90, 255);
+  background: rgb(30, 30, 255);
   color: white;
-  width: 100px;
+  width: 200px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 8px;

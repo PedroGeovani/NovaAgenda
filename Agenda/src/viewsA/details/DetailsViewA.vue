@@ -27,7 +27,7 @@ export default {
 
 label{
   display: inline-block;
-  width: 100px;
+  width: 200px;
 }
 </style>
 
