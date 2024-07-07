@@ -12,9 +12,22 @@ export default {
 
 <template>
   <div> 
-    <p> Endereço: {{ address }} </p>
-    <p> Cidade: {{ city}} </p>
-    <p> Telefone: {{ phone}} </p>
-    <p> Email: {{ email }} </p> 
+    <div class="text"> <label> Nome: </label> {{ name }} </div>
+    <div> <label> Endereço: </label> {{ address }} </div>
+    <div> <label> Cidade: </label> {{ city}} </div>
+    <div> <label> Telefone: </label> {{ phone}} </div>
+    <div> <label> Email: </label>{{ email }} </div> 
   </div>
 </template>
+
+<style scoped>
+.text{
+  font-weight: bold;
+}
+
+label{
+  display: inline-block;
+  width: 100px;
+}
+</style>
+
