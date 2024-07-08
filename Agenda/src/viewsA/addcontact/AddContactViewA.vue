@@ -1,76 +1,80 @@
 <template>
   <div class="box">
     <p class="title"> Adicionar Novo Contato </p>
-    <div> 
-      
-        <form id='name'> 
-          <label for="nome"> Nome: </label>
+    <div>
 
-          <input class="enter" type="text" id="name" v-model="addUser.name" placeholder="Digite seu nome">
+      <form id='name'>
+        <label for="nome"> Nome: </label>
+        <input class="enter" type="text" id="name" v-model="addUser.name" placeholder="Digite seu nome">
+      </form>
 
-          <input class="enter" type="text" id="name" v-model="name" placeholder="Digite seu nome">
+      <form id='address'>
+        <label for="address"> Endereço: </label>
+        <input class="enter" type="text" id="address" v-model="addUser.address" placeholder="Digite seu endereço">
+      </form>
 
+      <form id='city'>
+        <label for="city"> Cidade: </label>
+        <input class="enter" type="text" id="city" v-model="addUser.city" placeholder="Digite sua cidade">
+      </form>
 
-          <input class="enter"  type="text" id="address" v-model="addUser.address" placeholder="Digite seu endereço">
+      <form id='phone'>
+        <label for="phone"> Telefone: </label>
+        <input class="enter" type="text" id="phone" v-model="addUser.phone" placeholder="Digite seu telefone">
+      </form>
 
-          <input class="enter"  type="text" id="address" v-model="address" placeholder="Digite seu endereço">
+      <form id='email'>
+        <label for="email"> Email: </label>
+        <input class="enter" type="text" id="email" v-model="addUser.email" placeholder="Digite seu email">
+      </form>
 
-
-          <input class="enter" type="text" id="city" v-model="addUser.city" placeholder="Digite sua cidade">
-
-          <input class="enter" type="text" id="city" v-model="city" placeholder="Digite sua cidade">
-
-
-          <input class="enter"  type="text" id="phone" v-model="addUser.phone" placeholder="Digite seu telefone">
-
-          <input class="enter"  type="text" id="phone" v-model="phone" placeholder="Digite seu telefone">
-
-
-          <input class="enter" type="text" id="email" v-model="addUser.email" placeholder="Digite seu email">
-        </form>
-            
-      <div class="position"> 
-        <input class="button" type="submit" value="Descartar" @click="addUser=clear(addUser)"/>  
-        <input class="button" type="submit" value="Salvar" @click="newContact(addUser)"/>
+      <div class="position">
+        <input class="button" type="submit" value="Descartar" @click="addUser = clear(addUser)" />
+        <input class="button" type="submit" value="Salvar" @click="newContact(addUser)" />
 
       </div>
-        
+
     </div>
-  </div> 
+  </div>
 </template>
 
+
+
+
+
+
 <script lang="ts">
-import { api } from '@/api/api'; 
-import { DATABASE }  from '@/api/database';
+import { api } from '@/api/api';
+import { DATABASE } from '@/api/database';
 import { UserTypes } from '@/api/typesUser';
 
 
 
 export default {
-  data(){
-    return{
-      addUser : new UserTypes,      
+  data() {
+    return {
+      addUser: new UserTypes,
     }
   },
-  methods:{
-    clear: function(addUser: UserTypes):UserTypes{
-        addUser.name = ''
-        addUser.address =''
-        addUser.city =''
-        addUser.phone =''
-        addUser.email =''
-        return addUser
-      },
+  methods: {
+    clear: function (addUser: UserTypes): UserTypes {
+      addUser.name = ''
+      addUser.address = ''
+      addUser.city = ''
+      addUser.phone = ''
+      addUser.email = ''
+      return addUser
+    },
 
-  newContact : function(addUser: UserTypes){
-    api
-    .post(DATABASE+"/",{
-        name : addUser.name,
-        address : addUser.address,
-        city : addUser.city,
-        phone : addUser.phone,
-        email : addUser.email,
-    }).then(() => {this.addUser = this.clear(addUser)})
+    newContact: function (addUser: UserTypes) {
+      api
+        .post(DATABASE + "/", {
+          name: addUser.name,
+          address: addUser.address,
+          city: addUser.city,
+          phone: addUser.phone,
+          email: addUser.email,
+        }).then(() => { this.addUser = this.clear(addUser) })
     }
   }
 }
@@ -78,11 +82,12 @@ export default {
 
 
 <style scoped>
-form{
+form {
   margin: 8px 30px;
-  font-size: 16px; 
+  font-size: 16px;
 }
-label{
+
+label {
   display: inline-flex;
   width: 100px;
   font-size: 18px;
@@ -94,24 +99,24 @@ label{
 
 }
 
-.title{
+.title {
   display: inline-block;
   color: rgb(30, 30, 248);
   font-size: 20px;
-  font-weight: 600;  
+  font-weight: 600;
   padding: 3px 30px;
   border-radius: 10px;
   margin-left: 10px;
 }
 
-.enter{
+.enter {
   width: 300px;
   font-size: 16px;
   border-radius: 8px;
   padding: 3px;
 }
 
-.button{
+.button {
   display: inline-block;
   background: rgb(30, 30, 255);
   color: white;
@@ -123,13 +128,14 @@ label{
   padding: 3px;
   margin: 8px
 }
-.position{
+
+.position {
   display: flex;
   margin-right: 50px;
-  justify-content: flex-end;  
+  justify-content: flex-end;
 }
 
-.box{
+.box {
   width: 500px;
   background: rgb(200, 200, 255);
   border-radius: 30px;
