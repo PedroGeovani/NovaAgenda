@@ -14,15 +14,19 @@ import DetailsContactViewA from "@/viewsA/details/DetailsViewA.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {path: '/', name: 'home', component: HomeView},
+
     {path: '/Contacts', name: 'Contacts', component: ContactsView},
     {path: '/AddContact', name: 'AddContact', component: AddContactView},   
-    {path: '/EditContactView', name: 'EditContactView', component: EditContactView}, 
+    {path: '/EditContactView', name: 'EditContactView', component: EditContactView},
+    {path: '/EditContactView/:id', name: 'EditContactViewId', component: EditContactView}, 
     {path: '/DetailsContact', name: 'DetailsContact', component: DetailsContactView},
+    
     {path: '/ContactsA', name: 'ContactsA', component: ContactsViewA},
     {path: '/AddContactA', name: 'AddContactA', component: AddContactViewA},
-    {path: '/EditContactViewA/:id', name: 'EditContactViewA', component: EditContactViewA},
-    {path: '/DetailsContactA/:id/:name/:address/:city/:phone/:email', name: 'DetailsContactA', component: DetailsContactViewA},
+    {path: '/EditContactViewA/', name: 'EditContactViewA', component: EditContactViewA},
+    {path: '/EditContactViewA/:id', name: 'EditContactViewAId', component: EditContactViewA},
+    {path: '/DetailsContactA', name: 'DetailsContactA', component: DetailsContactViewA},
+
   ]
 })
 
