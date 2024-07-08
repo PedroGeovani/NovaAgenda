@@ -27,7 +27,8 @@
     
     <script lang="ts">
     import { api } from '@/api/api';
-    import { UserTypes } from '@/api/typesUser'
+    import { DATABASE } from '@/api/database';
+    import { UserTypes } from '@/api/typesUser';
     import DetailsViewA from '../details/DetailsViewA.vue';
 
     export default {
@@ -39,23 +40,22 @@
                 users: new Array<UserTypes>(),
                 i : -1,
                 legends :'Lista de Contatos',
-                idContact : '-1',
-                database: "/users"          
+                idContact : '-1',        
             }
         },         
         mounted(){ 
             api
-            .get(this.database)
+            .get(DATABASE)
             .then(response => (this.users = response.data)) 
             .catch(err =>  console.log(err));             
         },
         methods:{
             exclude: function(id: string){
             api
-            .delete(this.database+"/"+id)
+            .delete(DATABASE+"/"+id)
             .then(() => {
                     api
-                    .get(this.database)
+                    .get(DATABASE)
                     .then(response => (this.users = response.data)) 
                     .catch(err =>  console.log(err))}
             )},
@@ -109,7 +109,7 @@
   width: 500px;
   font-size: 18px;
   font-weight: bold;
-  color: rgb(45, 45, 248);
+  color: rgb(30, 30, 255);
 }
 
 .text{

@@ -15,8 +15,10 @@ const router = createRouter({
   routes: [
     {path: '/Contacts', name: 'Contacts', component: ContactsView},
     {path: '/AddContact', name: 'AddContact', component: AddContactView},   
-    {path: '/EditContactView', name: 'EditContactView', component: EditContactView}, 
+    {path: '/EditContactView', name: 'EditContactView', component: EditContactView},
+    {path: '/EditContactView/:id', name: 'EditContactViewId', component: EditContactView}, 
     {path: '/DetailsContact', name: 'DetailsContact', component: DetailsContactView},
+    
     {path: '/ContactsA', name: 'ContactsA', component: ContactsViewA},
     {path: '/AddContactA', name: 'AddContactA', component: AddContactViewA},
     {path: '/EditContactViewA/', name: 'EditContactViewA', component: EditContactViewA},
