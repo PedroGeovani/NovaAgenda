@@ -15,7 +15,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://66895db60ea28ca88b87c325.mockapi.io/api/users',
+
+        target: 'https://66895db60ea28ca88b87c325.mockapi.io/api',
+
         ws: true,
         changeOrigin: true
       }

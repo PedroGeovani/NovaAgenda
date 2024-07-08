@@ -1,30 +1,38 @@
 <template>
     <div class="box"> 
-        <div class="title"> {{ legends }}</div>            
-        <div v-for="(user,index) in users" :key="index" > 
-            <div class="name" v-if="i === -1"> Nome: {{ user.name }} </div>  
-            <button class="buttonM" @click="i=index, legends='Detalhes do contato'" v-if="i === -1"> Mostrar Detalhes </button> 
-            <div v-if="i === index"> 
-                <div class="text">
-                    <DetailsViewA 
-                    :name="user.name"
-                    :address="user.address" 
-                    :city="user.city" 
-                    :phone="user.phone" 
-                    :email="user.email"/> 
-                </div>
-                <div> 
-                    <button class="buttonE" @click="i = -1, legends='Lista de Contatos' "> Esconder Detalhes </button>
-                    <button class="buttonE" @click="exclude(String(user.id)), i=-1, legends='Lista de Contatos'"> Excluir contato </button> 
-                </div>
+
+      <div class="title"> {{ legends }}</div>            
+      <div v-for="(user,index) in users" :key="index" > 
+        <div class="name" v-if="i === -1"> Nome: {{ user.name }} </div>  
+        <button class="buttonM" @click="i=index, legends='Detalhes do contato'" v-if="i === -1"> Mostrar Detalhes </button> 
+        <div v-if="i === index">           
+          <div class="text">
+            <DetailsViewA 
+            :name="user.name"
+            :address="user.address" 
+            :city="user.city" 
+            :phone="user.phone" 
+            :email="user.email"/> 
+            <div>
+              <router-link class="routerlink" :to="{name:'EditContactViewAId', params:{id: user.id}}" > Editar contato </router-link>
             </div>
-        </div> 
+          </div>
+            <div> 
+              <button class="buttonE" @click="exclude(String(user.id)), i=-1, legends='Lista de Contatos'"> Excluir contato </button> 
+              <button class="buttonE" @click="i = -1, legends='Lista de Contatos' "> Esconder Detalhes </button>
+            </div>
+        </div>
+      </div> 
+
     </div>   
     </template>
     
     <script lang="ts">
     import { api } from '@/api/api';
-    import { UserTypes } from '@/api/typesUser'
+
+    import { DATABASE } from '@/api/database';
+    import { UserTypes } from '@/api/typesUser';
+
     import DetailsViewA from '../details/DetailsViewA.vue';
 
     export default {
@@ -35,22 +43,29 @@
             return{
                 users: new Array<UserTypes>(),
                 i : -1,
-                legends :'Lista de Contatos'  
+
+                legends :'Lista de Contatos',
+                idContact : '-1',        
+
             }
         },         
         mounted(){ 
             api
-            .get("/users")
+
+            .get(DATABASE)
             .then(response => (this.users = response.data)) 
-            .catch(err =>  console.log(err));            
+            .catch(err =>  console.log(err));             
+
         },
         methods:{
             exclude: function(id: string){
             api
-            .delete("/users/"+id)
+
+            .delete(DATABASE+"/"+id)
             .then(() => {
                     api
-                    .get("/users")
+                    .get(DATABASE)
+
                     .then(response => (this.users = response.data)) 
                     .catch(err =>  console.log(err))}
             )},
@@ -70,7 +85,7 @@
 }
 .buttonM{
   display: inline-block;
-  background: rgb(90, 90, 255);
+  background: rgb(30, 30, 255);
   color: white;
   width: 200px;
   font-size: 16px;
@@ -81,7 +96,7 @@
 }
 .buttonE{
   display: inline-block;
-  background: rgb(90, 90, 255);
+  background: rgb(30, 30, 255);
   color: white;
   width: 200px;
   font-size: 16px;
@@ -93,7 +108,8 @@
   
 }
 .box{
-  width: 60%;
+
+  width: 800px;
   background: rgb(200, 200, 255);
   border-radius: 30px;
   margin: 15px 40px;
@@ -104,7 +120,8 @@
   width: 500px;
   font-size: 18px;
   font-weight: bold;
-  color: rgb(45, 45, 248);
+  color: rgb(30, 30, 255);
+
 }
 
 .text{
@@ -113,6 +130,22 @@
   padding: 20px;
   font-size: 18px;
   color: rgb(45, 45, 248);
+}
+
+
+.routerlink{
+  display: inline-block;
+  background: rgb(255,255,255);
+  font-size: 16px;
+  text-align: center;
+  color: rgb(45,45,255);
+  font-weight: bold;
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-left: 530px;
+  width: 200px;  
 }
 
 

@@ -1,8 +1,9 @@
 <script lang="ts">
-  import HomeView from '@/views/HomeView.vue';
+ 
+import Navigation from '@/componets/Navigation.vue';
 export default {
-  components:{
-    HomeView
+  components:{   
+    Navigation,
   }
 }
 
@@ -10,7 +11,7 @@ export default {
 
 <template>
   <div> 
-    <HomeView/>   
+    <Navigation/>   
     <router-view> </router-view>
   </div>  
 </template>
