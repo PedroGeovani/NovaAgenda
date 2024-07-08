@@ -1,5 +1,6 @@
 <template>
     <div class="box"> 
+
       <div class="title"> {{ legends }}</div>            
       <div v-for="(user,index) in users" :key="index" > 
         <div class="name" v-if="i === -1"> Nome: {{ user.name }} </div>  
@@ -22,13 +23,16 @@
             </div>
         </div>
       </div> 
+
     </div>   
     </template>
     
     <script lang="ts">
     import { api } from '@/api/api';
+
     import { DATABASE } from '@/api/database';
     import { UserTypes } from '@/api/typesUser';
+
     import DetailsViewA from '../details/DetailsViewA.vue';
 
     export default {
@@ -39,23 +43,29 @@
             return{
                 users: new Array<UserTypes>(),
                 i : -1,
+
                 legends :'Lista de Contatos',
                 idContact : '-1',        
+
             }
         },         
         mounted(){ 
             api
+
             .get(DATABASE)
             .then(response => (this.users = response.data)) 
             .catch(err =>  console.log(err));             
+
         },
         methods:{
             exclude: function(id: string){
             api
+
             .delete(DATABASE+"/"+id)
             .then(() => {
                     api
                     .get(DATABASE)
+
                     .then(response => (this.users = response.data)) 
                     .catch(err =>  console.log(err))}
             )},
@@ -98,6 +108,7 @@
   
 }
 .box{
+
   width: 800px;
   background: rgb(200, 200, 255);
   border-radius: 30px;
@@ -110,6 +121,7 @@
   font-size: 18px;
   font-weight: bold;
   color: rgb(30, 30, 255);
+
 }
 
 .text{
@@ -119,6 +131,7 @@
   font-size: 18px;
   color: rgb(45, 45, 248);
 }
+
 
 .routerlink{
   display: inline-block;

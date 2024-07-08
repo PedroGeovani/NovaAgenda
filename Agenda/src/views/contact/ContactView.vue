@@ -1,3 +1,4 @@
+
 <template>
     <div class="box"> 
       <div class="title"> {{ legends }}</div>            
@@ -149,4 +150,3 @@
 
 
 </style>
-

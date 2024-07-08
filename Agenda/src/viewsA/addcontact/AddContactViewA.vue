@@ -5,32 +5,34 @@
       
         <form id='name'> 
           <label for="nome"> Nome: </label>
+
           <input class="enter" type="text" id="name" v-model="addUser.name" placeholder="Digite seu nome">
-        </form> 
 
-        <form id='address'> 
-          <label for="address"> Endereço:  </label>
+          <input class="enter" type="text" id="name" v-model="name" placeholder="Digite seu nome">
+
+
           <input class="enter"  type="text" id="address" v-model="addUser.address" placeholder="Digite seu endereço">
-        </form>
 
-        <form id='city'> 
-          <label for="city"> Cidade:  </label>
+          <input class="enter"  type="text" id="address" v-model="address" placeholder="Digite seu endereço">
+
+
           <input class="enter" type="text" id="city" v-model="addUser.city" placeholder="Digite sua cidade">
-        </form>
 
-        <form id='phone'> 
-          <label for="phone"> Telefone:  </label>
+          <input class="enter" type="text" id="city" v-model="city" placeholder="Digite sua cidade">
+
+
           <input class="enter"  type="text" id="phone" v-model="addUser.phone" placeholder="Digite seu telefone">
-        </form>
-        
-        <form id='email'> 
-          <label for="email"> Email:  </label>
+
+          <input class="enter"  type="text" id="phone" v-model="phone" placeholder="Digite seu telefone">
+
+
           <input class="enter" type="text" id="email" v-model="addUser.email" placeholder="Digite seu email">
         </form>
             
       <div class="position"> 
         <input class="button" type="submit" value="Descartar" @click="addUser=clear(addUser)"/>  
         <input class="button" type="submit" value="Salvar" @click="newContact(addUser)"/>
+
       </div>
         
     </div>
@@ -41,6 +43,7 @@
 import { api } from '@/api/api'; 
 import { DATABASE }  from '@/api/database';
 import { UserTypes } from '@/api/typesUser';
+
 
 
 export default {
@@ -73,6 +76,7 @@ export default {
 }
 </script>
 
+
 <style scoped>
 form{
   margin: 8px 30px;
@@ -83,7 +87,11 @@ label{
   width: 100px;
   font-size: 18px;
   font-weight: bold;
+
   color: rgb(30, 30, 248);
+
+  color: rgb(45, 45, 248);
+
 }
 
 .title{
@@ -108,6 +116,7 @@ label{
   background: rgb(30, 30, 255);
   color: white;
   width: 200px;
+
   font-size: 16px;
   font-weight: bold;
   border-radius: 8px;

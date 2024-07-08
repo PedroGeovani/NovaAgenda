@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from "@/views/HomeView.vue"
 
 import ContactsView from "@/views/contact/ContactView.vue";
 import AddContactView from "@/views/addcontact/AddContactView.vue";
@@ -13,6 +14,7 @@ import DetailsContactViewA from "@/viewsA/details/DetailsViewA.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+
     {path: '/Contacts', name: 'Contacts', component: ContactsView},
     {path: '/AddContact', name: 'AddContact', component: AddContactView},   
     {path: '/EditContactView', name: 'EditContactView', component: EditContactView},
@@ -24,6 +26,7 @@ const router = createRouter({
     {path: '/EditContactViewA/', name: 'EditContactViewA', component: EditContactViewA},
     {path: '/EditContactViewA/:id', name: 'EditContactViewAId', component: EditContactViewA},
     {path: '/DetailsContactA', name: 'DetailsContactA', component: DetailsContactViewA},
+
   ]
 })
 

@@ -15,7 +15,9 @@ h1{
     color: white;
 }
 header{
+
     background:rgb(30,30,255);
+
     padding: 10px 30px;
     border-bottom-left-radius: 30px;
 }
@@ -37,6 +39,7 @@ header{
     background: rgb(30, 30, 255);
     color: rgb(255, 255, 255);
     font-weight: bold;
+
 }
 
 </style>

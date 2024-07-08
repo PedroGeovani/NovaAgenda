@@ -1,3 +1,4 @@
+
 <template>
   <div class="box">
     <p class="title"> Editar Contato </p>
@@ -135,3 +136,4 @@ label{
   margin: 15px 40px;
 }
 </style>
+
