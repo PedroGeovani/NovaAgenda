@@ -17,7 +17,8 @@
           </div>
         </div>
         <div>
-          <button class="buttonE" @click="exclude(String(user.id)), i = -1, legends = 'Lista de Contatos'"> Excluir
+          <button class="buttonE" @click="deleteContatc(String(user.id)), i = -1, legends = 'Lista de Contatos'">
+            Excluir
             contato
           </button>
           <button class="buttonE" @click="i = -1, legends = 'Lista de Contatos'"> Esconder Detalhes </button>
@@ -53,13 +54,8 @@ export default {
     }
   },
   mounted() {
-    //chamada de api nova//
     this.getListUsers();
-    //api antiga//
-    //api
-    //  .get(DATABASE)
-    //  .then(response => (this.users = response.data))
-    //  .catch(err => console.log(err));
+
   },
   methods: {
     //função get nova//
@@ -67,19 +63,12 @@ export default {
       this.service.address.pipe().subscribe({ next: (response) => this.users = response })
       this.service.getContactBook(DATABASE)
     },
+    //função delete
+    deleteContatc(id: string) {
+      this.service.deleteContact(DATABASE + "/" + id)
+    }
 
-    //função delete antiga//
-    exclude: function (id: string) {
-      api
-        .delete(DATABASE + "/" + id)
-        .then(() => {
-          api
-            .get(DATABASE)
-            .then(response => (this.users = response.data))
-            .catch(err => console.log(err))
-        }
-        )
-    },
+
   }
 }
 </script>
