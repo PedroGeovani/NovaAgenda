@@ -6,11 +6,15 @@ export class AddressRest {
   }
 
   putContactBook(databaseId: string, item: UserTypes) {
-    api.put(databaseId, item)
+    api.put(databaseId, item).subscribe((response: any) => {
+      response
+    })
   }
 
   postContactBook(databaseId: string, item: UserTypes) {
-    api.post(databaseId, item)
+    api.post(databaseId, item).subscribe((response: any) => {
+      response
+    })
   }
 
   deleteContactBook(databaseId: string) {

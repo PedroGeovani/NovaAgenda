@@ -1,8 +1,5 @@
-import axios from "axios";
-import { URL } from "./address";
+import axios from 'axios'
 
 export const api = axios.create({
-    baseURL: URL
-  })
-
-
+  baseURL: '/api'
+})

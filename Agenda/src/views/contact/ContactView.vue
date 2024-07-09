@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { UserTypes } from '@/api/typesUser';
-import DetailsView from '../details/DetailsView.vue';
+import DetailsView from '@/components/details/DetailsView.vue';
 import { ContactService } from '../contact.service';
 
 export default {

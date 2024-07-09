@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import Navigation from '@/components/Navigation.vue';
+import Navigation from '@/components/navigation/Navigation.vue';
 export default {
   components: {
     Navigation,

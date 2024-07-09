@@ -30,7 +30,7 @@
 <script lang="ts">
 import { api } from '@/api/api';
 import { UserTypes } from '@/api/typesUser';
-import DetailsViewA from '../details/DetailsViewA.vue';
+import DetailsViewA from '@/components/details/DetailsView.vue';
 
 export default {
   components: {
