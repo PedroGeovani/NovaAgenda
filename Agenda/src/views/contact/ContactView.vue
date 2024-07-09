@@ -12,14 +12,12 @@
             :email="user.email" />
           <div>
             <router-link class="routerlink" :to="{ name: 'EditContactViewAId', params: { id: user.id } }"> Editar
-              contato
-            </router-link>
+              contato </router-link>
           </div>
         </div>
         <div>
-          <button class="buttonE" @click="deleteContatc(String(user.id)), i = -1, legends = 'Lista de Contatos'">
-            Excluir
-            contato
+          <button class="buttonE" @click="deleteContatc(String(user.id), i), i = -1, legends = 'Lista de Contatos'">
+            Excluir contato
           </button>
           <button class="buttonE" @click="i = -1, legends = 'Lista de Contatos'"> Esconder Detalhes </button>
         </div>
@@ -30,11 +28,9 @@
 </template>
 
 <script lang="ts">
-import { api } from '@/api/api';
-import { DATABASE } from '@/api/database';
 import { UserTypes } from '@/api/typesUser';
 import DetailsView from '../details/DetailsView.vue';
-import { ContactService } from './contact.service';
+import { ContactService } from '../contact.service';
 
 export default {
   components: {
@@ -58,17 +54,15 @@ export default {
 
   },
   methods: {
-    //função get nova//
     getListUsers() {
       this.service.address.pipe().subscribe({ next: (response) => this.users = response })
-      this.service.getContactBook(DATABASE)
+      this.service.getContactBook('')
     },
-    //função delete
-    deleteContatc(id: string) {
-      this.service.deleteContact(DATABASE + "/" + id)
+
+    deleteContatc(id: string, index: number) {
+      this.service.deleteContactItem(`${id}`)
+      this.users.splice(index, 1)
     }
-
-
   }
 }
 </script>

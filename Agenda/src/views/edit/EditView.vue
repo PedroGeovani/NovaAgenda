@@ -36,19 +36,18 @@
 </template>
 
 <script lang="ts">
-import { DATABASE } from '@/api/database';
 import { UserTypes } from '@/api/typesUser';
 
 
 export default {
   data() {
     return {
-      databaseId: DATABASE + '/' + this.$route.params.id,
+      databaseId: `/${this.$route.params.id}`,
       modifyUser: new UserTypes,
     }
   },
   mounted() {
-    this.getItemUser();
+    this.getItemUser(this.databaseId);
   },
   computed: {
     service() {
@@ -66,17 +65,15 @@ export default {
       return clearUser
     },
 
-    getItemUser() {
+    getItemUser(databaseId: string) {
       this.service.address.pipe().subscribe({ next: (response) => this.modifyUser = response })
-      this.service.getContactBook(this.databaseId)
+      this.service.getContactBook(databaseId)
     },
 
     updateContact: function (databaseId: string, modifyUser: UserTypes) {
       this.service.putContactItem(databaseId, modifyUser)
     },
   }
-
-
 }
 </script>
 

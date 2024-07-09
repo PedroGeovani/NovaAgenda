@@ -1,8 +1,8 @@
 <script lang="ts">
- 
-import Navigation from '@/componets/Navigation.vue';
+
+import Navigation from '@/components/Navigation.vue';
 export default {
-  components:{   
+  components: {
     Navigation,
   }
 }
@@ -10,8 +10,8 @@ export default {
 </script>
 
 <template>
-  <div> 
-    <Navigation/>   
+  <div>
+    <Navigation />
     <router-view> </router-view>
-  </div>  
+  </div>
 </template>

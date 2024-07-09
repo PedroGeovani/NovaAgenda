@@ -37,14 +37,13 @@
 
 <script lang="ts">
 import { api } from '@/api/api';
-import { DATABASE } from '@/api/database';
 import { UserTypes } from '@/api/typesUser';
 
 
 export default {
   data() {
     return {
-      databaseId: DATABASE + '/' + this.$route.params.id,
+      databaseId: `/${this.$route.params.id}`,
       user: new UserTypes,
       modifyUser: new UserTypes,
     }

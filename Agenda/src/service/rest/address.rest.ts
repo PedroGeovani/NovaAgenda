@@ -13,7 +13,9 @@ export class AddressRest {
     api.post(databaseId, item)
   }
 
-  deleteContact(databaseId: string) {
-    api.delete(databaseId)
+  deleteContactBook(databaseId: string) {
+    api.delete(databaseId).subscribe((response: any) => {
+      response
+    })
   }
 }

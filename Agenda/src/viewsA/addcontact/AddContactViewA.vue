@@ -45,7 +45,6 @@
 
 <script lang="ts">
 import { api } from '@/api/api';
-import { DATABASE } from '@/api/database';
 import { UserTypes } from '@/api/typesUser';
 
 
@@ -68,7 +67,7 @@ export default {
 
     newContact: function (addUser: UserTypes) {
       api
-        .post(DATABASE + "/", {
+        .post("/", {
           name: addUser.name,
           address: addUser.address,
           city: addUser.city,

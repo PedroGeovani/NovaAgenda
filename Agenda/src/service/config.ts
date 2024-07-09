@@ -1,4 +1,3 @@
-import { URL } from '@/api/address'
 import axios, { AxiosError, type AxiosInstance, type AxiosRequestConfig } from 'axios'
 
 function apiConfig(baseUrl: string): AxiosRequestConfig {
@@ -27,7 +26,7 @@ function initAxios(config: AxiosRequestConfig, token?: any): AxiosInstance {
   return defineInstance
 }
 
-function api(baseURL = URL, token?: any) {
+function api(baseURL = '/api', token?: any) {
   return initAxios(apiConfig(baseURL), token)
 }
 

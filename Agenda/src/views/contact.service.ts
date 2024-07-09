@@ -26,7 +26,7 @@ export class ContactService {
     this._address.postContactBook(databaseId, item)
   }
 
-  deleteContact(databaseId: string) {
-    this._address.deleteContact(databaseId)
+  deleteContactItem(databaseId: string) {
+    this._address.deleteContactBook(databaseId)
   }
 }
